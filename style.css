@@ -1,0 +1,50 @@
+* {
+	box-sizing: border-box;
+   margin: 0;
+}
+
+body {
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   margin: 0;
+}
+
+header {
+   background-color: blanchedalmond;
+   display: flex;
+   justify-content: space-between;
+}
+
+section {
+   display: flex;
+   justify-content: center;
+   margin: 0;
+}
+
+h1 {
+   font-size: 50px;
+}
+
+.button-box {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0;
+   height: 100px;
+}
+
+.start-button {
+   width: 100px;
+   height: 40px;
+}
+
+.quiz-box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 0;
+}
+
+.results {
+	display: none;
+}

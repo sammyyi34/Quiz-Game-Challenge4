@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammy's Quiz Game</title>
+    <link rel="stylesheet" type= "text/css" href="./style.css">
+</head>
+<body>
+    <!-- highscore and timer -->
+    <header>
+        <div class="highscores-box">
+            <a>View highscores</a>
+        </div>
+        <div class="timer-box">
+            <div>Timer: <span class="time">5</span> seconds</div>
+        </div>
+    </header>
+
+    <section>
+        <div class="heading">
+            <h1>Sammy's Quiz</h1>
+        </div>
+    </section>
+
+    <!-- start button -->
+    <div class="button-box">
+        <button class="start-button">Start</button>
+    </div>
+
+    <!-- actual quiz -->
+    <div class="quiz-box">
+        <div class="quiz">
+            <div class="question-container"></div>
+            <div class="answer-container"></div>
+        </div>
+        <div class="results">
+            <div class="enter-score-box">
+                <h2>Submit your score!</h2>
+                <form class="scoreForm">
+                    <label for="initials">Enter your initials here</label>
+                    <input type="text" name="initials" class="initials" maxlength="3">
+                    <button class="submit-button" type="submit">Submit Score</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
