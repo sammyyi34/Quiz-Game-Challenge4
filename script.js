@@ -11,7 +11,7 @@ var submitButton = document.querySelector('.submit-button');
 var highscoreContainer = document.querySelector('.highscore-container');
 var resetButton = document.querySelector('.reset-button');
 
-
+// default values
 var timerCount;
 var currentQuestionNumber = 0;
 var numCorrect = 0;
@@ -64,17 +64,9 @@ var myQuestions = [
    }
 ];
 
-function reset() {
-   // Reset game variables
-   currentQuestionIndex = 0;
-   score = 0;
- 
-}
- 
-
 // starts the game/timer
 function startGame() {
-   timerCount = 45;
+   timerCount = 10;
    startTimer();
    showQuiz();
 }
@@ -84,19 +76,20 @@ function startTimer() {
    timer = setInterval(function() {
        timerCount--;
        timerEl.textContent = timerCount;
-       if (timerCount === 0) {
+       if (timerCount <= 0) {
            clearInterval(timer);
            questionContainer.innerHTML = '<div>Sorry you ran out of time. Click start to try again.</div>';
-           startButton.style.display = 'block';
+         //   startButton.style.display = 'block';
         }
      }, 1000);
 }
 
+// the current question and the answer buttons show
 function showQuiz() {
    var currentQuestion = myQuestions[currentQuestionNumber];
    var output = [];
    var answerButtons = [];
- 
+   
    for (letter in currentQuestion.answers) {
      var isCorrect = (letter === currentQuestion.correctAnswer);
        answerButtons.push(
@@ -111,9 +104,8 @@ function showQuiz() {
  
    questionContainer.innerHTML = output.join('');
 }
- 
 
-
+// navigates to the next question when user clicks any answer button
 function nextQuestion() {
   currentQuestionNumber++; // update currentQuestionNumber
 
@@ -125,6 +117,7 @@ function nextQuestion() {
    }
 }
 
+// checks to see if users answer is the correct answer. add a color based on answer
 function checkAnswer(button) {
   var userAnswer = button.value;
   var isCorrect = button.dataset.correct === 'true';
@@ -144,24 +137,24 @@ function checkAnswer(button) {
   setTimeout(nextQuestion, 1000);
 }
 
+// shows the user's score and brings up a form for the users to type in their initials 
 function showResults() {
   var numCorrect = score;
   scoreResult.innerHTML = 'You got ' + numCorrect + ' out of ' + myQuestions.length + ' correct!';
   resultsContainer.classList.remove('results');
 }
 
+// after the user hits submit their initials along with their score gets save to a leaderboard
 function highscore(event) {
    event.preventDefault();
    var newHighscore = {
       initials: document.querySelector('#initials').value,
       score: score
    };
-   
-   // create highscore container element, 
+    
    var highscoreContainer = document.createElement("div");
    highscoreContainer.setAttribute("class", "highscore-container");
    
-   // create elements to display the highscore
    var highscoreTitle = document.createElement("h2");
    highscoreTitle.textContent = "Highscore";
    
@@ -171,21 +164,21 @@ function highscore(event) {
    var highscoreScore = document.createElement("p");
    highscoreScore.textContent = "Score: " + newHighscore.score;
    
-   // append elements to highscore container
    highscoreContainer.appendChild(highscoreTitle);
    highscoreContainer.appendChild(highscoreInitials);
    highscoreContainer.appendChild(highscoreScore);
    
-   // append highscore container to body element
+   
    document.body.appendChild(highscoreContainer);
+   
    quizContainer.style.display = "none";
    resultsContainer.style.display = "none";
    resetButton.style.display = "block";
 }
-    
-
  
-
+// when user clicks start the startGame funtion is called
 startButton.addEventListener('click', startGame);
+
+// when user clicks submit the highscore function is called
 submitButton.addEventListener('click', highscore);
-resetButton.addEventListener('click', reset);
+
