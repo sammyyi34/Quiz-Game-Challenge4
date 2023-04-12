@@ -17,9 +17,7 @@ var currentQuestionNumber = 0;
 var numCorrect = 0;
 var score = 0;
 var initialsInput;
-var answers = myQuestions.answers
-
-var currentQuestion = [];
+var answers = [];
 
 
 // quiz questions
@@ -76,7 +74,7 @@ function reset() {
 
 // starts the game/timer
 function startGame() {
-   timerCount = 10;
+   timerCount = 45;
    startTimer();
    showQuiz();
 }
@@ -154,22 +152,32 @@ function showResults() {
 
 function highscore(event) {
    event.preventDefault();
-   var output = [];
    var newHighscore = {
       initials: document.querySelector('#initials').value,
       score: score
    };
    
    // create highscore container element, 
-   output.push(
-      '<div class="highscore-container">' +
-        '<h2>Highscore</h2>' +
-        '<p>Initials: ' + newHighscore.initials + '</p>' +
-        '<p>Score: ' + newHighscore.score + '</p>' +
-      '</div>'
-   );
-    
-
+   var highscoreContainer = document.createElement("div");
+   highscoreContainer.setAttribute("class", "highscore-container");
+   
+   // create elements to display the highscore
+   var highscoreTitle = document.createElement("h2");
+   highscoreTitle.textContent = "Highscore";
+   
+   var highscoreInitials = document.createElement("p");
+   highscoreInitials.textContent = "Initials: " + newHighscore.initials;
+   
+   var highscoreScore = document.createElement("p");
+   highscoreScore.textContent = "Score: " + newHighscore.score;
+   
+   // append elements to highscore container
+   highscoreContainer.appendChild(highscoreTitle);
+   highscoreContainer.appendChild(highscoreInitials);
+   highscoreContainer.appendChild(highscoreScore);
+   
+   // append highscore container to body element
+   document.body.appendChild(highscoreContainer);
    quizContainer.style.display = "none";
    resultsContainer.style.display = "none";
    resetButton.style.display = "block";
@@ -180,4 +188,4 @@ function highscore(event) {
 
 startButton.addEventListener('click', startGame);
 submitButton.addEventListener('click', highscore);
-// resetButton.addEventListener('click', reset);
+resetButton.addEventListener('click', reset);
