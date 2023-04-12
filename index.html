@@ -14,7 +14,7 @@
             <a>View highscores</a>
         </div>
         <div class="timer-box">
-            <div>Timer: <span class="time">5</span> seconds</div>
+            <div>Timer: <span class="time">45</span> seconds</div>
         </div>
     </header>
 
@@ -33,17 +33,21 @@
     <div class="quiz-box">
         <div class="quiz">
             <div class="question-container"></div>
-            <div class="answer-container"></div>
+            <ul class="answer-container"></ul>
         </div>
         <div class="results">
+            <div class="score"></div>
             <div class="enter-score-box">
                 <h2>Submit your score!</h2>
                 <form class="scoreForm">
                     <label for="initials">Enter your initials here</label>
-                    <input type="text" name="initials" class="initials" maxlength="3">
+                    <input type="text" name="initials" class="initials" id="initials" maxlength="3">
                     <button class="submit-button" type="submit">Submit Score</button>
                 </form>
             </div>
+        </div>
+        <div class="highscore">
+            <button class="reset-button" type="reset">Reset</button>
         </div>
     </div>
 

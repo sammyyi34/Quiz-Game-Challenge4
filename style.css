@@ -43,8 +43,63 @@ h1 {
    justify-content: center;
    align-items: center;
    margin: 0;
+   font-size: 30px;
+}
+
+
+.question-container {
+   padding: 20px;
+   max-width: 500px;
+   margin: 0 auto; 
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+}
+
+.answer-button {
+   display: block;
+   margin: 10px;
+   height: 30px;
+   overflow: hidden;
+   text-align: left;
 }
 
 .results {
 	display: none;
+}
+
+.score, 
+.enter-score-box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.answer-button.correct {
+   background-color: green;
+}
+
+.answer-button.incorrect {
+   background-color: red;
+}
+
+.highscore-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.highscore-container h2 {
+   font-size: 50px;
+}
+
+.highscore-container p {
+   font-size: 20px;
+}
+
+.reset-button {
+   display: none;
 }
